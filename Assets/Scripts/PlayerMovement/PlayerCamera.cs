@@ -27,6 +27,7 @@ public class PlayerCamera : MonoBehaviour
         yRotation += mouseX;
 
         xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
         // Rotating the camera
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
