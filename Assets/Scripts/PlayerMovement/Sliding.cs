@@ -42,7 +42,7 @@ public class Sliding : MonoBehaviour
 
         // slide when control is clicked and either wasd is clicked
         // TODO: modifying later
-        if (Input.GetKeyDown(slideKey) && (horizontalInput != 0 || verticalInput != 0) && playerMovement.grounded)
+        if (Input.GetKeyDown(slideKey) && playerMovement.grounded)
             StartSlide();
 
         if (Input.GetKeyUp(slideKey) && playerMovement.sliding)
@@ -63,7 +63,10 @@ public class Sliding : MonoBehaviour
         playerObject.localScale = new Vector3(playerObject.localScale.x, slideYScale, playerObject.localScale.z);
         // Apply downward force to avoid player floating when shrinking
         rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
-        inputDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        if (horizontalInput != 0 || verticalInput != 0)
+            inputDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        else
+            inputDirection = orientation.forward;
         // slideTimer = maxSlideTime;
 
 

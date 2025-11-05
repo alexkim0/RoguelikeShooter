@@ -60,7 +60,7 @@ public class Dashing : MonoBehaviour
         playerMovement.dashing = true;
         playerMovement.maxYSpeed = maxDashYSpeed;
 
-        // playerCamera.DoFov(dashFov);
+        playerCamera.DoFov(dashFov);
 
         Transform forwardTransform;
 
@@ -98,7 +98,7 @@ public class Dashing : MonoBehaviour
         playerMovement.dashing = false;
         playerMovement.maxYSpeed = 0;
 
-        // playerCamera.DoFov(90f);
+        playerCamera.DoFov(90f);
 
         if (disableGravity)
             rb.useGravity = true;
