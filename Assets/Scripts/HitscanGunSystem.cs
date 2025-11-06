@@ -85,6 +85,9 @@ public class HitscanGunSystem : MonoBehaviour
             //     rayHit.collider.GetComponent<Enemy>().TakeDamage(damage);
         }
 
+        // Graphics
+        Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.Euler(0, 0, 0));
+
         bulletsLeft--;
         bulletsShot--;
 
