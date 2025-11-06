@@ -80,9 +80,8 @@ public class HitscanGunSystem : MonoBehaviour
         {
             Debug.Log(rayHit.collider.name);
 
-            // TODO: add damaging mechanics after adding enemy or health class
-            // if (rayHit.collider.CompareTag("Enemy"))
-            //     rayHit.collider.GetComponent<Enemy>().TakeDamage(damage);
+            if (rayHit.collider.CompareTag("Enemy"))
+                rayHit.collider.GetComponentInParent<Enemy>().TakeDamage(damage);
         }
 
         // Graphics
