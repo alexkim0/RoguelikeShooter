@@ -20,6 +20,7 @@ public class HitscanGunSystem : MonoBehaviour
     public Transform attackPoint;
     public RaycastHit rayHit;
     public LayerMask whatIsEnemy;
+    public LayerMask whatIsHitbox;
 
     [Header("Graphics")]
     public GameObject muzzleFlash, bulletHoleGraphic;
@@ -75,13 +76,30 @@ public class HitscanGunSystem : MonoBehaviour
         // Calculate Direction with Spread
         Vector3 direction = fpsCam.transform.forward + new Vector3(x, y, 0);
 
+        Ray ray = new Ray(fpsCam.transform.position, direction);
+
+
+        // 1️⃣ Broad raycast for visuals (any object)
+        if (Physics.Raycast(ray, out rayHit, range))
+        {
+            // Always spawn bullet hole
+            Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.LookRotation(rayHit.normal));
+        }
+
         //RayCast
-        if (Physics.Raycast(fpsCam.transform.position, direction, out rayHit, range, whatIsEnemy))
+        if (Physics.Raycast(ray, out rayHit, range, whatIsHitbox))
         {
             Debug.Log(rayHit.collider.name);
+            Enemy enemy = rayHit.collider.GetComponentInParent<Enemy>();
 
-            if (rayHit.collider.CompareTag("Enemy"))
-                rayHit.collider.GetComponentInParent<Enemy>().TakeDamage(damage);
+            if (enemy != null)
+            {
+                if (rayHit.collider.CompareTag("Head"))
+                    enemy.TakeDamage(damage * 2f);
+                else
+                    enemy.TakeDamage(damage);
+                
+            }
         }
 
         // Graphics
