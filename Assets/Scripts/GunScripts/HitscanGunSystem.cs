@@ -15,6 +15,10 @@ public class HitscanGunSystem : MonoBehaviour
     // bools
     bool shooting, readyToShoot, reloading;
 
+    [Header("Audio")]
+    public AudioSource rifleAudio;
+    public AudioSource reloadAudio;
+
     [Header("References")]
     public Camera fpsCam;
     public Transform attackPoint;
@@ -56,7 +60,10 @@ public class HitscanGunSystem : MonoBehaviour
 
         // TODO: might discard this if we don't want a reload mechanism
         if (Input.GetKeyDown(reloadKey) && bulletsLeft < magazineSize && !reloading)
+        {
+            reloadAudio.Play();
             Reload();
+        }    
 
         if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
         {
@@ -129,6 +136,5 @@ public class HitscanGunSystem : MonoBehaviour
     {
         bulletsLeft = magazineSize;
         reloading = false;
-    }
-    
+    }    
 }
