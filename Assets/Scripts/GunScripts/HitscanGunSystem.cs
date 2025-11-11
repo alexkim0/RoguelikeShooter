@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using System.Collections;
 
 public class HitscanGunSystem : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class HitscanGunSystem : MonoBehaviour
     public int magazineSize, bulletsPerTap;
     // decides whether your weapon will be a hold weapon or tap weapon
     public bool allowButtonHold;
+    public float laserDuration = 0.5f;
     int bulletsLeft, bulletsShot;
 
     // bools
@@ -21,6 +23,9 @@ public class HitscanGunSystem : MonoBehaviour
     public RaycastHit rayHit;
     public LayerMask whatIsEnemy;
     public LayerMask whatIsHitbox;
+    public Animator anim;
+    public LineRenderer laserLine;
+    public Transform laserOrigin;
 
     [Header("Graphics")]
     public GameObject muzzleFlash, bulletHoleGraphic;
@@ -36,6 +41,7 @@ public class HitscanGunSystem : MonoBehaviour
     {
         bulletsLeft = magazineSize;
         readyToShoot = true;
+        laserLine = GetComponent<LineRenderer>();
     }
 
     void Update()
@@ -75,22 +81,17 @@ public class HitscanGunSystem : MonoBehaviour
 
         // Calculate Direction with Spread
         Vector3 direction = fpsCam.transform.forward + new Vector3(x, y, 0);
+        laserLine.SetPosition(0, laserOrigin.position);
 
         Ray ray = new Ray(fpsCam.transform.position, direction);
 
+        PlayShootAnimation();
 
-        // 1️⃣ Broad raycast for visuals (any object)
-        if (Physics.Raycast(ray, out rayHit, range))
-        {
-            // Always spawn bullet hole
-            Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.LookRotation(rayHit.normal));
-        }
-
-        //RayCast
         if (Physics.Raycast(ray, out rayHit, range, whatIsHitbox))
         {
             Debug.Log(rayHit.collider.name);
             Enemy enemy = rayHit.collider.GetComponentInParent<Enemy>();
+            laserLine.SetPosition(1, rayHit.point);
 
             if (enemy != null)
             {
@@ -98,9 +99,22 @@ public class HitscanGunSystem : MonoBehaviour
                     enemy.TakeDamage(damage * 2f);
                 else
                     enemy.TakeDamage(damage);
-                
+
             }
         }
+        // 1️⃣ Broad raycast for visuals (any object)
+        else if (Physics.Raycast(ray, out rayHit, range))
+        {
+            // Always spawn bullet hole
+            Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.LookRotation(rayHit.normal));
+            laserLine.SetPosition(1, rayHit.point);
+        }
+        //RayCast
+        else
+        {
+            laserLine.SetPosition(1, laserOrigin.position + (fpsCam.transform.forward * range));
+        }
+        StartCoroutine(ShootLaser());
 
         // Graphics
         Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.Euler(0, 0, 0));
@@ -112,6 +126,13 @@ public class HitscanGunSystem : MonoBehaviour
 
         if (bulletsShot > 0 && bulletsLeft > 0)
             Invoke("Shoot", timeBetweenShots);
+    }
+
+    IEnumerator ShootLaser()
+    {
+        laserLine.enabled = true;
+        yield return new WaitForSeconds(laserDuration);
+        laserLine.enabled = false;
     }
 
     private void ResetShot()
@@ -129,6 +150,12 @@ public class HitscanGunSystem : MonoBehaviour
     {
         bulletsLeft = magazineSize;
         reloading = false;
+    }
+
+    private void PlayShootAnimation()
+    {
+        anim.Play("RevolverShoot", 0, 0f);
+
     }
     
 }
