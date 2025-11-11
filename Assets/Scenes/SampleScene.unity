@@ -1808,6 +1808,9 @@ MonoBehaviour:
   magazineSize: 30
   bulletsPerTap: 1
   allowButtonHold: 1
+  rifleAudio: {fileID: 1716779586}
+  reloadAudio: {fileID: 0}
+  laserDuration: 0.5
   fpsCam: {fileID: 330585545}
   attackPoint: {fileID: 0}
   whatIsEnemy:

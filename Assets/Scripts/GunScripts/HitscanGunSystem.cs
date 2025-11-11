@@ -69,7 +69,7 @@ public class HitscanGunSystem : MonoBehaviour
         {
             reloadAudio.Play();
             Reload();
-        }    
+        }
 
         if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
         {
@@ -164,6 +164,4 @@ public class HitscanGunSystem : MonoBehaviour
         anim.Play("RevolverShoot", 0, 0f);
 
     }
-    
-    }    
-}
+}    
