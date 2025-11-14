@@ -8,6 +8,7 @@ TagManager:
   - Head
   - Body
   - Chest
+  - Item
   layers:
   - Default
   - TransparentFX

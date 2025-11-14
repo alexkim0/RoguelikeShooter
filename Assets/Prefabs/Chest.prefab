@@ -215,7 +215,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Chest
   isOpen: 0
   animator: {fileID: 250638056020580686}
-  lootPrefab: {fileID: 0}
+  lootPrefab: {fileID: 6356547387209035322, guid: 003b51998c27e3948832a4702c723866, type: 3}
+  itemPool:
+  - {fileID: 6356547387209035322, guid: 003b51998c27e3948832a4702c723866, type: 3}
+  - {fileID: 8946820620542268751, guid: ffece59e052e5144eb8e1d4ba7f747c8, type: 3}
 --- !u!1 &7213990051692960509
 GameObject:
   m_ObjectHideFlags: 0

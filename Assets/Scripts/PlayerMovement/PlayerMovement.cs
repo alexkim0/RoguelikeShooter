@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public float maxAirSpeed;
     public float downwardSlideSpeed;
     public float slideSpeed;
-    private float moveSpeed;
+    public float moveSpeed;
     public float dashSpeed;
     public float dashSpeedChangeFactor;
     public float maxYSpeed;
