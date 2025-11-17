@@ -11,6 +11,7 @@ public class GroundedEnemyMovement : MonoBehaviour
     public Rigidbody rb;
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
+    public Animator animator;
 
     [Header("DashSetting")]
     public float dashSpeed = 18f;
@@ -49,11 +50,17 @@ public class GroundedEnemyMovement : MonoBehaviour
         // if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (!playerInAttackRange) ChasePlayer();
         else if (playerInAttackRange && !dashing && !onDashCooldown ) AttackPlayer();
+
+        float currentSpeed = agent.velocity.magnitude;
+    
+        // Convert current movement speed to a usable multiplier
+        float multiplier = Mathf.Clamp(currentSpeed / agent.speed, 0.5f, 2f);
+        animator.SetFloat("RunningMultiplier", multiplier);
     }
 
     private void Patroling()
     {
-
+        
     }
 
     private void ChasePlayer()
@@ -64,6 +71,7 @@ public class GroundedEnemyMovement : MonoBehaviour
     private void AttackPlayer()
     {
         dashDirection = player.position - transform.position; dashDirection.y = 0; dashDirection = dashDirection.normalized;
+        animator.Play("EnemyCharging", 0, 0f);
         StartCoroutine(Dash(dashDirection));
     }
 
