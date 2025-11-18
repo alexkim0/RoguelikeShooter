@@ -9,6 +9,7 @@ TagManager:
   - Body
   - Chest
   - Item
+  - Gun
   layers:
   - Default
   - TransparentFX

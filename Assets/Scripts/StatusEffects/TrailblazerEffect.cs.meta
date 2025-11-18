@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: c5230ee2b55b3d943b052946e8b37268
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - playerMovement: {instanceID: 0}
+  - firePrefab: {fileID: 5031744830554558319, guid: abf75d4a7d373f14dad93f99423dc18a, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
