@@ -15,7 +15,8 @@ public class HitscanGunSystem : MonoBehaviour
     int bulletsLeft, bulletsShot;
 
     // bools
-    bool shooting, readyToShoot, reloading;
+    bool shooting, readyToShoot;
+    public bool reloading;
 
     [Header("Audio")]
     public AudioSource rifleAudio;

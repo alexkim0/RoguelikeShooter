@@ -8,6 +8,8 @@ TagManager:
   - Head
   - Body
   - Chest
+  - Item
+  - Gun
   layers:
   - Default
   - TransparentFX
