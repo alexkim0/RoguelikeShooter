@@ -8,6 +8,10 @@ public class Chest : MonoBehaviour
     public GameObject lootPrefab; // optional: spawn loot
     public GameObject[] itemPool = new GameObject[2];
 
+    [Header("Audio")]
+    public AudioSource chestOpenAudio;
+    public AudioClip chestOpenClip;
+
 
     void Reset() {
         // simple convenience to auto-assign an Animator if present
@@ -25,7 +29,11 @@ public class Chest : MonoBehaviour
         if (lootPrefab != null) Instantiate(itemPool[index], transform.position + Vector3.up * 1.5f, Quaternion.identity);
 
         // any other logic: grant loot, play sfx, disable collider, etc.
-
+        if (chestOpenAudio != null)
+        {
+            chestOpenAudio.PlayOneShot(chestOpenClip);
+        }
+        
 
     }
 }
