@@ -18,6 +18,11 @@ public class HitscanGunSystem : MonoBehaviour
     bool shooting, readyToShoot;
     public bool reloading;
 
+    [Header("Audio")]
+    public AudioSource rifleAudio;
+    public AudioClip rifleClip;
+    public AudioSource reloadAudio;
+
     [Header("References")]
     public Camera fpsCam;
     public Transform attackPoint;
@@ -63,7 +68,10 @@ public class HitscanGunSystem : MonoBehaviour
 
         // TODO: might discard this if we don't want a reload mechanism
         if (Input.GetKeyDown(reloadKey) && bulletsLeft < magazineSize && !reloading)
+        {
+            reloadAudio.Play();
             Reload();
+        }
 
         if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
         {
@@ -86,6 +94,7 @@ public class HitscanGunSystem : MonoBehaviour
 
         Ray ray = new Ray(fpsCam.transform.position, direction);
 
+        rifleAudio.PlayOneShot(rifleClip, 1.0f);
         PlayShootAnimation();
 
         if (Physics.Raycast(ray, out rayHit, range, whatIsHitbox))
@@ -158,5 +167,4 @@ public class HitscanGunSystem : MonoBehaviour
         anim.Play("RevolverShoot", 0, 0f);
 
     }
-    
-}
+}    
