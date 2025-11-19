@@ -19,6 +19,7 @@ public class HitscanGunSystem : MonoBehaviour
 
     [Header("Audio")]
     public AudioSource rifleAudio;
+    public AudioClip rifleClip;
     public AudioSource reloadAudio;
 
     [Header("References")]
@@ -92,6 +93,7 @@ public class HitscanGunSystem : MonoBehaviour
 
         Ray ray = new Ray(fpsCam.transform.position, direction);
 
+        rifleAudio.PlayOneShot(rifleClip, 1.0f);
         PlayShootAnimation();
 
         if (Physics.Raycast(ray, out rayHit, range, whatIsHitbox))
