@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damageAmt)
     {
         currentHealth -= damageAmt;
+        DamagePopUpGenerator.currentGenerator.CreateDamagePopUp(transform.position, damageAmt.ToString());
     }
     
     private void CheckHealth()
