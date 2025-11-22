@@ -159,9 +159,9 @@ GameObject:
   - component: {fileID: 2708082230901527305}
   - component: {fileID: 6140476842814254017}
   - component: {fileID: 3080448767369710352}
-  - component: {fileID: 5790786548382663366}
   - component: {fileID: 504950744523111933}
   - component: {fileID: 7257075400754041410}
+  - component: {fileID: 3857830580202697883}
   m_Layer: 6
   m_Name: ChargingEnemy
   m_TagString: Enemy
@@ -177,7 +177,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3981856694456342235}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.10969, y: 6.86, z: -6.11712}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -277,38 +277,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   maxHealth: 100
---- !u!114 &5790786548382663366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3981856694456342235}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92eeb9fe1d36f4994959ec822ede47c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyAi
-  agent: {fileID: 504950744523111933}
-  rb: {fileID: 0}
-  player: {fileID: 0}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 8
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 256
-  animator: {fileID: 9008218531152176973}
-  dashSpeed: 30
-  dashDuration: 0.25
-  dashCooldown: 1
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 0
-  timeBetweenAttacks: 0
-  sightRange: 0
-  attackRange: 5
-  playerInSightRange: 0
-  playerInAttackRange: 0
 --- !u!195 &504950744523111933
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -358,6 +326,48 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3857830580202697883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3981856694456342235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3814eb08b5c8b43c28550a85dc69a17f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChargingEnemy
+  agent: {fileID: 504950744523111933}
+  player: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 256
+  attackDuration: 0.25
+  attackCooldown: 1.5
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointRange: 0
+  timeBetweenAttacks: 0
+  sightRange: 0
+  attackRange: 5
+  playerInSightRange: 0
+  playerInAttackRange: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 8
+  groundCheckHeight: 3
+  groundOffset: 1
+  attacking: 0
+  onAttackCooldown: 0
+  animator: {fileID: 9008218531152176973}
+  rb: {fileID: 0}
+  dashSpeed: 30
+  dashDuration: 0.25
+  dashCooldown: 1
+  dashDamage: 20
 --- !u!1 &8899014059391688172
 GameObject:
   m_ObjectHideFlags: 0
