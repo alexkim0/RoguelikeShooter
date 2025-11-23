@@ -1,4 +1,4 @@
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
+
 using UnityEngine;
 
 public class ShootingProjectile : MonoBehaviour
@@ -15,6 +15,6 @@ public class ShootingProjectile : MonoBehaviour
             
             Destroy(gameObject);
         }
-        else if (!other.gameObject.CompareTag("Enemy")) Destroy(gameObject);
+        else if (!other.gameObject.CompareTag("Enemy") && !other.gameObject.CompareTag("Body")) Destroy(gameObject);
     }
 }
