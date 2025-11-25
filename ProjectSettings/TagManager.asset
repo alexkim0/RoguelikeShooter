@@ -10,6 +10,7 @@ TagManager:
   - Chest
   - Item
   - Gun
+  - Primary
   layers:
   - Default
   - TransparentFX
