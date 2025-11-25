@@ -3,7 +3,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float maxHealth;
+    public int moneyDropped;
     private float currentHealth;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,8 +26,9 @@ public class Enemy : MonoBehaviour
     
     private void CheckHealth()
     {
-        if (currentHealth < 0)
+        if (currentHealth <= 0)
         {
+            CurrencyManager.current.AddMoney(moneyDropped);
             Destroy(gameObject);
         }
     }

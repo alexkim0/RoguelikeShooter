@@ -1124,6 +1124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   maxHealth: 100
+  moneyDropped: 5
 --- !u!1 &7800882730161827810
 GameObject:
   m_ObjectHideFlags: 0
