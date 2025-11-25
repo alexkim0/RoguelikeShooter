@@ -30,11 +30,6 @@ public class PlayerArsenalManager : MonoBehaviour
             weapons.Add(child.gameObject);
         }
 
-        foreach (GameObject child in weapons)
-        {
-            Debug.Log(child);
-        }
-
         // Primary weapon will be default to start
         currentWeaponIndex = 0;
         // disable all weapon except primary
@@ -42,7 +37,6 @@ public class PlayerArsenalManager : MonoBehaviour
         {
             weapons[i].gameObject.SetActive(false);
         }
-        Debug.Log(weapons);
     }
 
     // Update is called once per frame
@@ -57,8 +51,6 @@ public class PlayerArsenalManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Alpha1 + i)) {
                 StopAllCoroutines();
-                handAnimator.SetInteger("WeaponType", i);
-                SetZAxis(i);
                 StartCoroutine(EquipWeapon(i));
             }
         }
@@ -70,6 +62,8 @@ public class PlayerArsenalManager : MonoBehaviour
             yield break;
 
         handAnimator.SetTrigger("Unequip");
+        handAnimator.SetInteger("WeaponType", index);
+        SetZAxis(index);
 
         isSwapping = true;
 

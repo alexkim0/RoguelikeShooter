@@ -76,7 +76,6 @@ public class HitscanGunSystem : MonoBehaviour
         // Spread
         float x = Random.Range(-spread, spread);
         float y = Random.Range(-spread, spread);
-        Debug.Log(fpsCam.transform.forward);
 
         // Calculate Direction with Spread
         Vector3 direction = fpsCam.transform.forward + fpsCam.transform.right * x + fpsCam.transform.up * y;
@@ -99,7 +98,10 @@ public class HitscanGunSystem : MonoBehaviour
                         enemy.TakeDamage(damage);
                 }
             }
+            
         }
+
+        
 
         // Graphics
         Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.Euler(0, 0, 0));

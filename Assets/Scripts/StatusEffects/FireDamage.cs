@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class FireDamage : MonoBehaviour
 {
-    public float damage=6;
+    public float damage = 6;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        Debug.Log(other.gameObject.name);
+        if (other.CompareTag("Body"))
         {
-            Enemy enemyHealth = other.GetComponent<Enemy>();
+            Enemy enemyHealth = other.GetComponentInParent<Enemy>();
             if (enemyHealth != null)
                 enemyHealth.TakeDamage(damage);
         }

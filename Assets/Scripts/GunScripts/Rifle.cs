@@ -4,30 +4,40 @@ using System.Collections;
 public class Rifle : HitscanGunSystem
 {
     [Header("Rifle References")]
-    public LineRenderer laserLineGenerator;
+    public GameObject laserTrail;
     public Transform laserOrigin;
     public float laserDuration = 0.5f;
+    public Animator animator;
+    private LineRenderer currentLineTrail;
 
     protected override void Shoot()
     {
+        currentLineTrail = Instantiate(laserTrail).GetComponent<LineRenderer>();
 
-        laserLineGenerator.SetPosition(0, laserOrigin.position);
+        PlayShootAnimation();
+
+        currentLineTrail.SetPosition(0, laserOrigin.position);
         base.Shoot();
 
         if (rayHit.collider)
         {
-            laserLineGenerator.SetPosition(1, rayHit.point);
+            currentLineTrail.SetPosition(1, rayHit.point);
         } else
         {
-            laserLineGenerator.SetPosition(1, laserOrigin.position + (fpsCam.transform.forward * range));
+            currentLineTrail.SetPosition(1, laserOrigin.position + (fpsCam.transform.forward * range));
         }
-        StartCoroutine(ShootLaser());
     }
 
     IEnumerator ShootLaser()
     {
-        laserLineGenerator.enabled = true;
+        currentLineTrail.enabled = true;
         yield return new WaitForSeconds(laserDuration);
-        laserLineGenerator.enabled = false;
+        currentLineTrail.enabled = false;
+    }
+
+    private void PlayShootAnimation()
+    {
+        animator.Play("RifleShoot", 0, 0f);
+
     }
 }
