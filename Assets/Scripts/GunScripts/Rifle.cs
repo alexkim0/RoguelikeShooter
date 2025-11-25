@@ -10,6 +10,17 @@ public class Rifle : HitscanGunSystem
     public Animator animator;
     private LineRenderer currentLineTrail;
 
+    [Header("Audio")]
+    public AudioSource rifleAudio;
+    public AudioClip rifleClip;
+    public AudioSource reloadAudio;
+
+    protected override void Reload()
+    {
+        reloadAudio.Play();
+        base.Reload();
+    }
+
     protected override void Shoot()
     {
         currentLineTrail = Instantiate(laserTrail).GetComponent<LineRenderer>();
@@ -17,6 +28,7 @@ public class Rifle : HitscanGunSystem
         PlayShootAnimation();
 
         currentLineTrail.SetPosition(0, laserOrigin.position);
+        rifleAudio.PlayOneShot(rifleClip, 1.0f);
         base.Shoot();
 
         if (rayHit.collider)
