@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class HealthPack : GeneralItem
+public class HealthIncrease : GeneralItem
 {
-    public float healAmount = 25f;
+    public float increaseAmount = 10f;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -12,8 +12,8 @@ public class HealthPack : GeneralItem
 
         if (playerStats != null)
             {
-                playerStats.currentHealth += healAmount;
-                playerStats.currentHealth = Mathf.Min(playerStats.currentHealth, playerStats.maxHealth);
+                playerStats.maxHealth += increaseAmount;
+                playerStats.currentHealth += increaseAmount; 
                 Destroy(gameObject);
             }
         }
