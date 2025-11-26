@@ -11,9 +11,9 @@ public class Rifle : HitscanGunSystem
     private LineRenderer currentLineTrail;
 
     [Header("Audio")]
-    public AudioSource rifleAudio;
-    public AudioClip rifleClip;
-    public AudioSource reloadAudio;
+    public AudioSource rifleAudio; // https://pixabay.com/sound-effects/laser-104024/
+    public AudioClip rifleClip; //https://pixabay.com/sound-effects/laser-104024/
+    public AudioSource reloadAudio; // https://pixabay.com/sound-effects/1911-reload-6248/
 
     protected override void Reload()
     {

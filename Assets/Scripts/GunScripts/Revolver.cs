@@ -10,9 +10,9 @@ public class Revolver : HitscanGunSystem
     public float laserDuration = 0.5f;
 
     [Header("Audio")]
-    public AudioSource revolverAudio;
-    public AudioClip revolverClip;
-    public AudioSource reloadAudio;
+    public AudioSource revolverAudio; // https://pixabay.com/sound-effects/laser-104024/
+    public AudioClip revolverClip; // https://pixabay.com/sound-effects/laser-104024/
+    public AudioSource reloadAudio; // https://pixabay.com/sound-effects/1911-reload-6248/
 
     protected override void Awake()
     {
