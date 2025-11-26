@@ -35,6 +35,11 @@ public class ChestInteraction : MonoBehaviour
         // Player pressed interact key
         if (focusedChest != null && Input.GetKeyDown(interactKey))
         {
+            if (CurrencyManager.current.money < focusedChest.chestCost)
+                return;
+
+            CurrencyManager.current.AddMoney(-focusedChest.chestCost);
+
             focusedChest.Open();
             ClearFocus();
         }
