@@ -15,6 +15,21 @@ public class Rifle : HitscanGunSystem
     public AudioClip rifleClip; //https://pixabay.com/sound-effects/laser-104024/
     public AudioSource reloadAudio; // https://pixabay.com/sound-effects/1911-reload-6248/
 
+    protected override void Awake()
+    {
+        // rifle preset
+        damage = 5;
+        timeBetweenShooting = 0.1f;
+        spread = 0.01f;
+        range = 100;
+        reloadTime = 1.5f;  
+        magazineSize = 20;
+        bulletsPerTap = 0;
+        allowButtonHold = true;
+        base.Awake();
+
+    }
+
     protected override void Reload()
     {
         reloadAudio.Play();
