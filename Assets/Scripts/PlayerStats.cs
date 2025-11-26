@@ -20,12 +20,13 @@ public class PlayerStats : MonoBehaviour
     void Update()
     {
         healthBar.fillAmount = Mathf.Clamp(currentHealth / maxHealth, 0, 1);
+        
     }
 
     public void TakeDamage(float damageAmt)
     {
         currentHealth -= damageAmt;
-        IsDead();
+        //IsDead();
     }
 
     public void IsDead()
