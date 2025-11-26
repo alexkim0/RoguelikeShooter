@@ -22,7 +22,6 @@ public class ChestInteraction : MonoBehaviour
     public TextMeshProUGUI promptText;
 
     private Chest focusedChest;
-
     void Awake()
     {
         if (!fpsCam) fpsCam = Camera.main;
@@ -71,8 +70,13 @@ public class ChestInteraction : MonoBehaviour
         if (interactPromptUI)
         {
             interactPromptUI.SetActive(true);
-            if (promptText)
-                promptText.text = "Press F to Open";
+
+            int cost = chest.chestCost;
+            int money = CurrencyManager.current.money;
+
+            promptText.text = money >= cost
+                ? promptText.text = $"Press '{interactKey}' to open chest (Cost: {cost})"
+                : promptText.text = $"Not enough money to open chest (Cost: {cost})";
         }
     }
     

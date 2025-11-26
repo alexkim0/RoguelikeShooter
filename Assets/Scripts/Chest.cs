@@ -13,8 +13,14 @@ public class Chest : MonoBehaviour
     public AudioSource chestOpenAudio;
     public AudioClip chestOpenClip;
 
+    [Header("Chest Cost")]
+    public int chestCost;
+    public int minCost = 20;
+    public int maxCost = 100;
+
     void Start()
     {
+        chestCost = Random.Range(minCost, maxCost + 1);
         enemySpawner = GetComponentInChildren<ChestEnemySpawner>();
     }
 
