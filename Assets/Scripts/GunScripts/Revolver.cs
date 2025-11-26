@@ -10,9 +10,9 @@ public class Revolver : HitscanGunSystem
     public float laserDuration = 0.5f;
 
     [Header("Audio")]
-    public AudioSource rifleAudio;
-    public AudioClip rifleClip;
-    public AudioSource reloadAudio;
+    public AudioSource revolverAudio; // https://pixabay.com/sound-effects/laser-104024/
+    public AudioClip revolverClip; // https://pixabay.com/sound-effects/laser-104024/
+    public AudioSource reloadAudio; // https://pixabay.com/sound-effects/1911-reload-6248/
 
     protected override void Awake()
     {
@@ -41,7 +41,7 @@ public class Revolver : HitscanGunSystem
         PlayShootAnimation();
 
         laserLine.SetPosition(0, laserOrigin.position);
-        rifleAudio.PlayOneShot(rifleClip, 1.0f);
+        revolverAudio.PlayOneShot(revolverClip, 1.0f);
         base.Shoot();
 
         if (rayHit.collider)

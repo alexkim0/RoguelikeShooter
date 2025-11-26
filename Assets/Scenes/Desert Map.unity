@@ -2337,6 +2337,9 @@ MonoBehaviour:
   laserOrigin: {fileID: 1843518376}
   laserDuration: 0.5
   animator: {fileID: 1644100583}
+  rifleAudio: {fileID: 1367698183}
+  rifleClip: {fileID: 8300000, guid: 49865aaeec3d64ca9bfcdde5e5f47ccd, type: 3}
+  reloadAudio: {fileID: 960599601}
 --- !u!4 &1504904451 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7075766046172182914, guid: 182cdc612112a40cdb6fb268d20b9ca8, type: 3}
@@ -4163,6 +4166,14 @@ PrefabInstance:
       propertyPath: reloadAudio
       value: 
       objectReference: {fileID: 960599601}
+    - target: {fileID: 3915976040415926922, guid: 863de3b74fe0949878579a62a2defce5, type: 3}
+      propertyPath: revolverClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 49865aaeec3d64ca9bfcdde5e5f47ccd, type: 3}
+    - target: {fileID: 3915976040415926922, guid: 863de3b74fe0949878579a62a2defce5, type: 3}
+      propertyPath: revolverAudio
+      value: 
+      objectReference: {fileID: 1367698183}
     - target: {fileID: 3917668486623626134, guid: 863de3b74fe0949878579a62a2defce5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 7.4946313

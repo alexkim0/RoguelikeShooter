@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   maxHealth: 100
-  moneyDropped: 10
+  moneyDropped: 15
 --- !u!195 &504950744523111933
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -319,7 +319,6 @@ MonoBehaviour:
   dashDuration: 0.25
   dashCooldown: 1
   dashDamage: 20
-  moneyDropped: 10
 --- !u!1 &8899014059391688172
 GameObject:
   m_ObjectHideFlags: 0
