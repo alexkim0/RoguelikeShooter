@@ -44,6 +44,8 @@ public class HitscanGunSystem : MonoBehaviour
     {
         MyInput();
 
+        if (bulletsLeft == 0 && !reloading) Reload();
+
         // SetText
         bulletText.SetText(bulletsLeft + " / " + magazineSize);
     }
