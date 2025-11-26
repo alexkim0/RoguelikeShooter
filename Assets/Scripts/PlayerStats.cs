@@ -1,5 +1,7 @@
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerStats : MonoBehaviour
 {
@@ -23,5 +25,14 @@ public class PlayerStats : MonoBehaviour
     public void TakeDamage(float damageAmt)
     {
         currentHealth -= damageAmt;
+        IsDead();
+    }
+
+    public void IsDead()
+    {
+        if (currentHealth == 0)
+        {
+            SceneManager.LoadScene("Game Over");
+        }
     }
 }
