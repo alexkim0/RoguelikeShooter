@@ -90,6 +90,63 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3664980684621829884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2933481029441151368}
+  - component: {fileID: 1660363830834724874}
+  m_Layer: 9
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2933481029441151368
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3664980684621829884}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7075766046172182914}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1660363830834724874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3664980684621829884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d870098f0104a52a61da3277153c5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChestEnemySpawner
+  enemyPrefabs:
+  - {fileID: 3981856694456342235, guid: 8c4bba0797a51430985356cc2fc706ff, type: 3}
+  - {fileID: 5387080835767662522, guid: 2d9f95e65ce414d25a3ffa765c18d488, type: 3}
+  - {fileID: 8946820620542268751, guid: ffece59e052e5144eb8e1d4ba7f747c8, type: 3}
+  enemyCount: 5
+  areaSize: {x: 20, y: 0, z: 20}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
+  raycastHeight: 50
+  groundOffset: 0.1
+  lowBoundEnemyCount: 2
+  highBoundEnemyCount: 5
 --- !u!1 &3771957588107920878
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,6 +214,7 @@ Transform:
   m_Children:
   - {fileID: 2162841277239315962}
   - {fileID: 902651973404988076}
+  - {fileID: 2933481029441151368}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &250638056020580686
@@ -220,6 +278,7 @@ MonoBehaviour:
   itemPool:
   - {fileID: 6356547387209035322, guid: 003b51998c27e3948832a4702c723866, type: 3}
   - {fileID: 8946820620542268751, guid: ffece59e052e5144eb8e1d4ba7f747c8, type: 3}
+  enemySpawner: {fileID: 0}
   chestOpenAudio: {fileID: -1579222310939926766}
   chestOpenClip: {fileID: 8300000, guid: c97965cd0e68e4839b18459c46b79c21, type: 3}
 --- !u!82 &-1579222310939926766

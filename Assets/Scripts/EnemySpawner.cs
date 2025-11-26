@@ -17,7 +17,7 @@ public class EnemySpawner : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        SpawnEnemies();
+
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class EnemySpawner : MonoBehaviour
         
     }
 
-    private void SpawnEnemies()
+    public virtual void SpawnEnemies()
     {
         for (int i = 0; i < enemyCount; i++)
         {
@@ -51,7 +51,7 @@ public class EnemySpawner : MonoBehaviour
         Vector3 start = transform.position + offset + Vector3.up * raycastHeight;
         Vector3 end = Vector3.down;
 
-        if (Physics.Raycast(start, end, out RaycastHit hit, raycastHeight * 2f, whatIsGround,
+        if (Physics.Raycast(start, end, out RaycastHit hit, raycastHeight * 3f, whatIsGround,
                 QueryTriggerInteraction.Ignore))
         {
             return hit.point + (Vector3.up * groundOffset);

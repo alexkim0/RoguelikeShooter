@@ -7,11 +7,16 @@ public class Chest : MonoBehaviour
     public Animator animator; // optional: chest opening animation
     public GameObject lootPrefab; // optional: spawn loot
     public GameObject[] itemPool = new GameObject[2];
+    public ChestEnemySpawner enemySpawner;
 
     [Header("Audio")]
     public AudioSource chestOpenAudio;
     public AudioClip chestOpenClip;
 
+    void Start()
+    {
+        enemySpawner = GetComponentInChildren<ChestEnemySpawner>();
+    }
 
     void Reset() {
         // simple convenience to auto-assign an Animator if present
@@ -22,6 +27,8 @@ public class Chest : MonoBehaviour
     {
         if (isOpen) return;
         isOpen = true;
+
+        enemySpawner.SpawnEnemies();
 
         if (animator != null) animator.enabled = true;
         int index = Random.Range(0, itemPool.Length);

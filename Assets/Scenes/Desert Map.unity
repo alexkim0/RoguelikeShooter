@@ -2214,37 +2214,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1433062860}
-  - component: {fileID: 1433062859}
+  - component: {fileID: 1433062861}
   m_Layer: 0
-  m_Name: EnemySpawner
+  m_Name: MapEnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1433062859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1433062858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0e1ca5840f8f4298b66e24d0c0ee387, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  enemyPrefabs:
-  - {fileID: 3981856694456342235, guid: 8c4bba0797a51430985356cc2fc706ff, type: 3}
-  - {fileID: 5387080835767662522, guid: 2d9f95e65ce414d25a3ffa765c18d488, type: 3}
-  - {fileID: 8946820620542268751, guid: ffece59e052e5144eb8e1d4ba7f747c8, type: 3}
-  enemyCount: 5
-  areaSize: {x: 10, y: 0, z: 10}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 8
-  raycastHeight: 10
-  groundOffset: 0.1
 --- !u!4 &1433062860
 Transform:
   m_ObjectHideFlags: 0
@@ -2254,12 +2231,36 @@ Transform:
   m_GameObject: {fileID: 1433062858}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.06243, y: 0, z: 4.77479}
+  m_LocalPosition: {x: 21.72, y: 75.3, z: 4.77479}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1433062861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433062858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e28640f583ac40cbb27d2eb8b6c396b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MapEnemySpawner
+  enemyPrefabs:
+  - {fileID: 3981856694456342235, guid: 8c4bba0797a51430985356cc2fc706ff, type: 3}
+  - {fileID: 5387080835767662522, guid: 2d9f95e65ce414d25a3ffa765c18d488, type: 3}
+  - {fileID: 8946820620542268751, guid: ffece59e052e5144eb8e1d4ba7f747c8, type: 3}
+  enemyCount: 5
+  areaSize: {x: 300, y: 0, z: 300}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
+  raycastHeight: 100
+  groundOffset: 0.1
+  spawnTimeInterval: 10
 --- !u!4 &1454425328 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8046267476288776379, guid: 8c4bba0797a51430985356cc2fc706ff, type: 3}
