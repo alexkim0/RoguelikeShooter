@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System.Collections;
+using System;
 
 
 public class PlayerStats : MonoBehaviour
@@ -11,6 +12,13 @@ public class PlayerStats : MonoBehaviour
     public float currentShield;
     public float maxShield = 100f;
     public float maxHealth = 100f;
+
+    [Header("Shield Regen")]
+    public float shieldRegenDelay = 5f;
+    public float shieldRegenRate = 10f;
+
+    // Tracks time at which the player last took damage
+    private float lastDamageTime = -Mathf.Infinity;
 
     [Header("references")]
     public Image healthBar;
@@ -33,18 +41,29 @@ public class PlayerStats : MonoBehaviour
 
         healthText.text = $"{currentHealth} / {maxHealth}";
         shieldText.text = $"{currentShield} / {maxShield}";
+        
+        RegenerateShield();
     }
 
     public void TakeDamage(float damageAmt)
     {
+        // Mark the time the player was hit so regen can be delayed
+        lastDamageTime = Time.time;
+
         if (currentShield > 0)
         {
             currentShield -= damageAmt;
 
+            // If the damage exceeded our shield, apply the leftover damage to health
             if (currentShield < 0)
             {
+                float leftoverdamage = -currentShield; // Leftover damage after shield depletes
                 currentShield = 0;
-                currentHealth += currentShield; // currentShield is negative here
+                currentHealth -= leftoverdamage;
+                if (currentHealth < 0) 
+                {
+                    currentHealth = 0;
+                }
             }
         }
         else
@@ -59,6 +78,22 @@ public class PlayerStats : MonoBehaviour
 
         //IsDead();
     }
+
+    public void RegenerateShield()
+    {
+        // Only regen if player is still alive and shield is not full
+        if (currentHealth <= 0) return;
+        if (currentShield >= maxShield) return;
+
+        // If the required delay hasn't passed yet, do nothing
+        if (Time.time - lastDamageTime < shieldRegenDelay) return;
+
+        // Regenerate shield over time
+        currentShield += shieldRegenRate * Time.deltaTime;
+        
+        if (currentShield > maxShield) currentShield = maxShield;
+    }
+
 
     public void IsDead()
     {
