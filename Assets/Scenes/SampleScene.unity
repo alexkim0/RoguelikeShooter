@@ -577,6 +577,135 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 202253793}
   m_CullTransparentMesh: 1
+--- !u!1 &233227493
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 233227495}
+  - component: {fileID: 233227494}
+  m_Layer: 0
+  m_Name: AudioSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &233227494
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233227493}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 21bd0c1e5b4db154dbf5cf89bceea581, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.42
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &233227495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233227493}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -55.53896, y: -5.23308, z: 34.79117}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &269287559
 GameObject:
   m_ObjectHideFlags: 0
@@ -1829,7 +1958,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ece4b4a79a9e4d26ab4bd448f08b9c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackSpeedUpgrade
-  primary: {fileID: 0}
 --- !u!135 &1014103127
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2416,6 +2544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf1bf7e063df448f380ab050a6022fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rifle
+<<<<<<< Updated upstream
   damage: 5
   timeBetweenShooting: 0.1
   spread: 0.01
@@ -2446,6 +2575,8 @@ MonoBehaviour:
   rifleAudio: {fileID: 0}
   rifleClip: {fileID: 0}
   reloadAudio: {fileID: 0}
+=======
+>>>>>>> Stashed changes
 --- !u!4 &1504904451 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7075766046172182914, guid: 182cdc612112a40cdb6fb268d20b9ca8, type: 3}
@@ -2672,11 +2803,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1558975513}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1644100583 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8588376795806612186, guid: 863de3b74fe0949878579a62a2defce5, type: 3}
-  m_PrefabInstance: {fileID: 8235459695950165262}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1724454614
 GameObject:
   m_ObjectHideFlags: 0
@@ -2888,7 +3014,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c666991eeda2b4819a371e85267799fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CurrencyManager
-  money: 0
 --- !u!4 &1789148937
 Transform:
   m_ObjectHideFlags: 0
@@ -2935,11 +3060,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 442856943}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1869400163 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2346666527090429244, guid: 863de3b74fe0949878579a62a2defce5, type: 3}
-  m_PrefabInstance: {fileID: 8235459695950165262}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1877441784
 GameObject:
   m_ObjectHideFlags: 0
@@ -3164,9 +3284,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a43ba4d5502f341cfb8f7f49fc082d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+<<<<<<< Updated upstream
   currentHealth: 0
   currentShield: 0
   maxShield: 100
+=======
+  health: 0
+>>>>>>> Stashed changes
   maxHealth: 100
   shieldRegenDelay: 5
   shieldRegenRate: 10
@@ -3209,13 +3333,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa814fe1c2ca411bbb818e467b72c34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerArsenalManager
-  playerArsenal: {fileID: 1869400163}
-  handAnimator: {fileID: 1644100583}
-  handMesh: {fileID: 1604132306}
-  isSwapping: 0
-  swapTime: 0
-  rifleZAxis: -0.22
-  revolverZAxis: -0.67
 --- !u!114 &1877441796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3228,7 +3345,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ece4b4a79a9e4d26ab4bd448f08b9c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackSpeedUpgrade
-  primary: {fileID: 0}
 --- !u!1 &1932278611
 GameObject:
   m_ObjectHideFlags: 0
@@ -3466,7 +3582,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d0d00b53f244d76bf912ba1e56d163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoneyUI
-  moneyText: {fileID: 2031031555}
 --- !u!114 &2031031555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4619,4 +4734,8 @@ SceneRoots:
   - {fileID: 7424060037391090552}
   - {fileID: 1014103130}
   - {fileID: 1789148937}
+<<<<<<< Updated upstream
   - {fileID: 928914742}
+=======
+  - {fileID: 233227495}
+>>>>>>> Stashed changes
