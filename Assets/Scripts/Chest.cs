@@ -15,13 +15,12 @@ public class Chest : MonoBehaviour
 
     [Header("Chest Cost")]
     public int chestCost;
-    public int minCost = 20;
-    public int maxCost = 100;
 
     void Start()
     {
-        chestCost = Random.Range(minCost, maxCost + 1);
+        chestCost = Random.Range(ChestManager.minCost, ChestManager.maxCost + 1);
         enemySpawner = GetComponentInChildren<ChestEnemySpawner>();
+        Debug.Log($"Chest spawned with cost {chestCost}");
     }
 
     void Reset() {
@@ -46,7 +45,11 @@ public class Chest : MonoBehaviour
         {
             chestOpenAudio.PlayOneShot(chestOpenClip);
         }
-        
+    }
 
+    public void UpdateChestCost()
+    {
+        chestCost = Random.Range(ChestManager.minCost, ChestManager.maxCost + 1);
+        Debug.Log($"Chest cost updated to {chestCost}");
     }
 }

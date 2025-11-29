@@ -35,7 +35,7 @@ public class MapEnemySpawner : EnemySpawner
         if (currentTime >= nextIncreaseTime)
         {
             nextIncreaseTime += 30f;
-            enemyCount += 5;
+            enemyCount += 1;
             Debug.Log("Increasing enemy count to: " + enemyCount);
         }
     }
