@@ -9,9 +9,22 @@ public class ShootingGroundedEnemy : GroundedEnemyMovement
     [Header("Attacking")]
     public float timeBetweenAttacks = 0.5f;
     protected bool alreadyAttacked = false;
+    [Header("Audio")]
+    public AudioSource shootingAudio; // https://www.101soundboards.com/sounds/24101790-star-wars-blaster
+    public AudioClip shootingClip; // https://www.101soundboards.com/sounds/24101790-star-wars-blaster
+
     protected override void AttackPlayer()
     {
-        Shoot();
+        if (!alreadyAttacked)
+        {
+            AttackAudio();
+            Shoot();
+        }
+    }
+
+    protected override void AttackAudio()
+    {
+        shootingAudio.PlayOneShot(shootingClip, 1.0f);
     }
 
     private void Shoot()

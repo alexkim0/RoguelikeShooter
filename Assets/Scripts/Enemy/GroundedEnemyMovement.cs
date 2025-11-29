@@ -65,6 +65,11 @@ public class GroundedEnemyMovement : MonoBehaviour
         
     }
 
+    protected virtual void AttackAudio()
+    {
+        
+    }
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
