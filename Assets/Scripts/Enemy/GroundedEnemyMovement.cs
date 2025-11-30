@@ -3,6 +3,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using DG.Tweening;
 
 public class GroundedEnemyMovement : MonoBehaviour
 {
@@ -10,6 +11,12 @@ public class GroundedEnemyMovement : MonoBehaviour
     public NavMeshAgent agent;
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
+    public ParticleSystem spawnParticle;
+
+    [Header("SpawnSettings")]
+    private bool isSpawning;
+    private Vector3 originalScale;
+    public float spawnTime = 0.5f;
 
     [Header("AttackSetting")]
     public float attackDuration = 0.25f;
@@ -37,16 +44,44 @@ public class GroundedEnemyMovement : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        originalScale = transform.localScale;
+        transform.localScale = Vector3.zero;
+    }
+
+    void Start()
+    {
+        if (isSpawning) return;
+        StartCoroutine(SpawnRoutine());
     }
 
     protected virtual void Update()
     {
+        if (isSpawning) return;
         // playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
         // if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (!playerInAttackRange) ChasePlayer();
         else if (playerInAttackRange && !attacking && !onAttackCooldown ) AttackPlayer();
+
+    }
+    IEnumerator SpawnRoutine()
+    {
+        isSpawning = true;
+
+        if (spawnParticle != null)
+            spawnParticle.Play();
+
+        yield return new WaitForSeconds(spawnParticle.main.duration);
+
+        // tween scale from 0 → 1
+        Tween t = transform.DOScale(originalScale, spawnTime).SetEase(Ease.OutBack);
+
+        // wait until tween finishes
+        yield return t.WaitForCompletion();
+
+        isSpawning = false;
+
 
     }
 

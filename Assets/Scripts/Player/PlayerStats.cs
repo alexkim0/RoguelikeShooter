@@ -21,10 +21,9 @@ public class PlayerStats : MonoBehaviour
     private float lastDamageTime = -Mathf.Infinity;
 
     [Header("references")]
-    public Image healthBar;
+    public Slider healthBar;
     public Image shideldBar;
     public TextMeshProUGUI healthText;
-    public TextMeshProUGUI shieldText;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,11 +35,10 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthBar.fillAmount = Mathf.Clamp(currentHealth / maxHealth, 0, 1);
+        healthBar.value = Mathf.Clamp(currentHealth / maxHealth, 0, 1);
         shideldBar.fillAmount = Mathf.Clamp(currentShield / maxShield, 0, 1);
 
-        healthText.text = $"{currentHealth} / {maxHealth}";
-        shieldText.text = $"{currentShield} / {maxShield}";
+        healthText.text = $"{currentHealth}/{maxHealth}";
         
         RegenerateShield();
     }

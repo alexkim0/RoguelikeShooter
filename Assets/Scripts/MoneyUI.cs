@@ -14,7 +14,7 @@ public class MoneyUI : MonoBehaviour
 
     void IncreaseMoneyText()
     {
-        moneyText.text = "Money: " + CurrencyManager.current.money;
+        moneyText.text = CurrencyManager.current.money.ToString();
     }
 
 }
