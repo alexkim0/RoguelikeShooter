@@ -231,9 +231,10 @@ GameObject:
   - component: {fileID: 8317339534123297634}
   - component: {fileID: 8737964218295537399}
   - component: {fileID: 3558669921459003973}
-  m_Layer: 0
+  - component: {fileID: 4210773682582752532}
+  m_Layer: 7
   m_Name: Eye
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -311,6 +312,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4210773682582752532
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858578840864151774}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0017029147, y: 0.0016522516, z: 0.00088093086}
+  m_Center: {x: 0.00043579575, y: -0.00022981603, z: -0.0012916869}
 --- !u!1 &2091432645562055009
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,6 +480,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caee54a42fa5a48389398c9b23fdcb01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandBoss
+  maxHealth: 400
+  moneyDropped: 0
+  currentHealth: 0
+  bossName: Rage Hand
   player: {fileID: 0}
   origin: {fileID: 6575143772621949099}
   anim: {fileID: 6975371093841917141}
@@ -715,9 +741,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1223727608503052758}
   - component: {fileID: 8552397958246428435}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Palm Hitbox
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -756,8 +782,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.94, y: 4.21, z: 2.34}
-  m_Center: {x: 0, y: 2.1, z: 0}
+  m_Size: {x: 1.46, y: 4.74, z: 2.34}
+  m_Center: {x: 0.24, y: 2.34, z: 0}
 --- !u!1 &4871949332871223578
 GameObject:
   m_ObjectHideFlags: 0

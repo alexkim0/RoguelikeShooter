@@ -1,10 +1,11 @@
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
     public float maxHealth;
     public int moneyDropped;
-    private float currentHealth;
+    public float currentHealth;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -12,24 +13,19 @@ public class Enemy : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        CheckHealth();
-    }
-
-    public void TakeDamage(float damageAmt)
+    public virtual void TakeDamage(float damageAmt)
     {
         currentHealth -= damageAmt;
         DamagePopUpGenerator.currentGenerator.CreateDamagePopUp(transform.position, damageAmt.ToString());
-    }
-    
-    private void CheckHealth()
-    {
-        if (currentHealth <= 0)
+        if (currentHealth <= 0f)
         {
-            CurrencyManager.current.AddMoney(moneyDropped);
-            Destroy(gameObject);
+            Death();
         }
+    }
+
+    protected virtual void Death()
+    {
+        CurrencyManager.current.AddMoney(moneyDropped);
+        Destroy(gameObject);
     }
 }

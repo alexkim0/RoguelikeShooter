@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class HandBoss : MonoBehaviour
+public class HandBoss : Boss
 {
     [Header("References")]
     public GameObject player;
@@ -19,8 +19,6 @@ public class HandBoss : MonoBehaviour
     public bool isResetting;
     public float rotateSpeed = 5f;
 
-
-
     [Header("Ground Detection")]
     public LayerMask whatIsGround;
     public float raycastHeight = 60f;
@@ -35,6 +33,8 @@ public class HandBoss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!fightStarted) return;
+        
         if (!isSlamming && !isResetting)
             StareAtPlayer();
         if (!isSlamming && !isResetting)
