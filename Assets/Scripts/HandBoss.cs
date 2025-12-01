@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using DG.Tweening;
 
 public class HandBoss : Boss
 {
@@ -7,6 +8,8 @@ public class HandBoss : Boss
     public GameObject player;
     public Transform origin;
     public Animator anim;
+    public ParticleSystem slamParticlePrefab;
+    public ParticleSystem deathParticle;
 
     [Header("Slam Settings")]
     public float handHeight = 30f;
@@ -34,11 +37,18 @@ public class HandBoss : Boss
     void Update()
     {
         if (!fightStarted) return;
-        
+
         if (!isSlamming && !isResetting)
             StareAtPlayer();
         if (!isSlamming && !isResetting)
             FollowPlayer();
+    }
+    protected override void Death()
+    {
+        deathParticle.Play();
+        onBossDied?.Invoke();
+        // play death anim, disable AI, drop loot, etc.
+        Destroy(gameObject, 0.5f);
     }
 
     private void StareAtPlayer()
@@ -105,6 +115,8 @@ public class HandBoss : Boss
 
                 yield return null;
             }
+            Instantiate(slamParticlePrefab, targetPos + Vector3.down * groundOffset, Quaternion.Euler(-90, 0, 0));
+            Camera.main.DOShakePosition(2, 0.3f, 20, 90, false, ShakeRandomnessMode.Full);
         }
 
         isSlamming = false;

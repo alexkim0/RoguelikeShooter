@@ -106,6 +106,7 @@ MonoBehaviour:
   bossUI: {fileID: 0}
   duration: 2
   strength: 0.6
+  completeMaterial: {fileID: 2100000, guid: 2c56fe4cea16141fba0d9ecb22fff593, type: 2}
 --- !u!1001 &1102486259598550112
 PrefabInstance:
   m_ObjectHideFlags: 0

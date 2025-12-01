@@ -42,6 +42,7 @@ public class HitscanGunSystem : MonoBehaviour
 
     void Update()
     {
+        if (PauseManager.instance.isPaused) return;
         MyInput();
 
         if (bulletsLeft == 0 && !reloading) Reload();

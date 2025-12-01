@@ -1,6 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class BossBeacon : Interactable
 {
@@ -10,10 +11,16 @@ public class BossBeacon : Interactable
     [Header("Camera Shake Settings")]
     public float duration;
     public float strength;
+
+    [Header("References")]
+    public Material completeMaterial;
+    public MeshRenderer mr;
+    private bool defeated = false;
     void Awake()
     {
         interactPrompt = "to start the Challenge";
         bossUI = UIManager.instance.bossUI;
+        mr = GetComponentInChildren<MeshRenderer>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,9 +35,12 @@ public class BossBeacon : Interactable
     }
 
     public override void Interact()
-    {   
-        if (isInteracted) return;
-        StartCoroutine(BossSpawnRoutine());
+    { 
+        if (!isInteracted && defeated)
+            SceneManager.LoadScene("End");
+        else if (!isInteracted)
+            StartCoroutine(BossSpawnRoutine());
+
     }
 
     IEnumerator BossSpawnRoutine()
@@ -41,12 +51,23 @@ public class BossBeacon : Interactable
 
         Vector3 spawnPos = transform.position + Vector3.up * 50f;
         Boss boss = Instantiate(bossPrefab, spawnPos, Quaternion.identity).GetComponent<Boss>();
+        boss.onBossDied += Completed;
 
         // Bind the UI to this boss and start the fight
         bossUI.BindBoss(boss);
         boss.StartFight();
 
         isInteracted = true;
+    }
+
+    private void Completed()
+    {
+        defeated = true;
+        isInteracted = false;
+        interactPrompt = "to leave";
+        Material[] mats = mr.materials;
+        mats[0] = completeMaterial;
+        mr.materials = mats;
     }
 
 
