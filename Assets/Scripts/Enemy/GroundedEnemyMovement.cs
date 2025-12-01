@@ -82,7 +82,6 @@ public class GroundedEnemyMovement : MonoBehaviour
 
         isSpawning = false;
 
-
     }
 
     private void Patroling()
