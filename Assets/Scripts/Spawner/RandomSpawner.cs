@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class RandomSpawner : MonoBehaviour
 {
     [Header("Spawn Settings")]
-    public GameObject[] enemyPrefabs;
-    public int enemyCount = 5;
+    public GameObject[] prefabs;
+    public int spawnCount = 5;
     public Vector3 areaSize = new Vector3(10f, 0, 10f);
 
     [Header("Ground Detection")]
@@ -28,10 +28,10 @@ public class EnemySpawner : MonoBehaviour
 
     public virtual void SpawnEnemies()
     {
-        for (int i = 0; i < enemyCount; i++)
+        for (int i = 0; i < spawnCount; i++)
         {
             Vector3 randomPos = GetRandomGroundPosition();
-            GameObject enemy = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
+            GameObject enemy = prefabs[Random.Range(0, prefabs.Length)];
             Instantiate(enemy, randomPos, Quaternion.identity);
         }
     }

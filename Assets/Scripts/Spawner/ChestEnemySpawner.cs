@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ChestEnemySpawner : EnemySpawner
+public class ChestEnemySpawner : RandomSpawner
 {
     [Header("Spawn Settings")]
     public int lowBoundEnemyCount = 4;
@@ -9,7 +9,7 @@ public class ChestEnemySpawner : EnemySpawner
     void Start()
     {
         
-    }
+    }   
 
     // Update is called once per frame
     void Update()
@@ -19,7 +19,7 @@ public class ChestEnemySpawner : EnemySpawner
 
     public override void SpawnEnemies()
     {
-        enemyCount = Random.Range(lowBoundEnemyCount, highBoundEnemyCount);
+        spawnCount = Random.Range(lowBoundEnemyCount, highBoundEnemyCount);
         base.SpawnEnemies();
     }
 }

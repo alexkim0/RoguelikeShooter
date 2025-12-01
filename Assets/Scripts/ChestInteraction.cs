@@ -21,7 +21,7 @@ public class ChestInteraction : MonoBehaviour
     public GameObject interactPromptUI;
     public TextMeshProUGUI promptText;
 
-    private Chest focusedChest;
+    private Interactable focusedItem;
     void Awake()
     {
         if (!fpsCam) fpsCam = Camera.main;
@@ -33,14 +33,14 @@ public class ChestInteraction : MonoBehaviour
         UpdateFocus();
 
         // Player pressed interact key
-        if (focusedChest != null && Input.GetKeyDown(interactKey))
+        if (focusedItem != null && Input.GetKeyDown(interactKey))
         {
-            if (CurrencyManager.current.money < focusedChest.chestCost)
-                return;
+            // if (CurrencyManager.current.money < focusedItem.chestCost)
+            //     return;
 
-            CurrencyManager.current.AddMoney(-focusedChest.chestCost);
+            // CurrencyManager.current.AddMoney(-focusedItem.chestCost);
 
-            focusedChest.Open();
+            focusedItem.Interact();
             ClearFocus();
         }
     }
@@ -51,44 +51,52 @@ public class ChestInteraction : MonoBehaviour
         RaycastHit hit;
 
         // SphereCast is just like Raycast but with a radius
-        if (Physics.SphereCast(ray, sphereRadius, out hit, interactRange, whatIsInteractable, QueryTriggerInteraction.Ignore))
+        if (Physics.SphereCast(ray, sphereRadius, out hit, interactRange, whatIsInteractable, QueryTriggerInteraction.Collide))
         {
-            if (hit.collider.CompareTag("Chest"))
-            {
-                Chest chest = hit.collider.GetComponentInParent<Chest>();
+            // if (hit.collider.CompareTag("Chest"))
+            // {
+            //     Interactable chest = hit.collider.GetComponentInParent<Chest>();
 
-                if (chest != null && !chest.isOpen)
-                {
-                    SetFocus(chest, hit);
-                    return;
-                }
+            //     if (chest != null && !chest.isInteracted)
+            //     {
+            //         SetFocus(chest, hit);
+            //         return;
+            //     }
+            // }
+            Interactable item = hit.collider.GetComponentInParent<Interactable>();
+
+            if (item != null && !item.isInteracted)
+            {
+                SetFocus(item, hit);
+                return;
             }
         }
 
         ClearFocus();
     }
 
-    private void SetFocus(Chest chest, RaycastHit hit)
+    private void SetFocus(Interactable item, RaycastHit hit)
     {
-        focusedChest = chest;
+        focusedItem = item;
 
         if (interactPromptUI)
         {
             interactPromptUI.SetActive(true);
 
-            int cost = chest.chestCost;
-            int money = CurrencyManager.current.money;
+            // int cost = chest.chestCost;
+            // int money = CurrencyManager.current.money;
 
-            promptText.text = money >= cost
-                ? promptText.text = $"Press '{interactKey}' to open chest (Cost: {cost})"
-                : promptText.text = $"Not enough money to open chest (Cost: {cost})";
+            // promptText.text = money >= cost
+            //     ? promptText.text = $"Press '{interactKey}' to open chest (Cost: {cost})"
+            //     : promptText.text = $"Not enough money to open chest (Cost: {cost})";
+            promptText.text = $"Press {interactKey} " + focusedItem.interactPrompt;
         }
     }
     
     private void ClearFocus()
     {
-        if (focusedChest == null) return;
-        focusedChest = null;
+        if (focusedItem == null && !interactPromptUI.activeInHierarchy) return;
+        focusedItem = null;
 
         if (interactPromptUI)
             interactPromptUI.SetActive(false);

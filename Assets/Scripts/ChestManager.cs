@@ -3,7 +3,7 @@ using UnityEngine;
 public class ChestManager : MonoBehaviour
 {
     public static int minCost = 20;
-    public static int maxCost = 100;
+    public static int maxCost = 50;
 
     public float increaseInterval = 30f;
     public int minIncreaseAmount = 10;

@@ -8,15 +8,7 @@ public class ChargingEnemy : GroundedEnemyMovement
     [Header("References")]
     public Animator animator;
     public Rigidbody rb;
-    // public ParticleSystem spawnParticle;
-
-    // [Header("SpawnSettings")]
-    // private bool isSpawning;
-    // private Vector3 originalScale;
-    // public float spawnTime = 0.5f;
     
-
-
     [Header("DashSetting")]
     public float dashSpeed = 30f;
     public float dashDuration = 0.25f;
@@ -32,16 +24,7 @@ public class ChargingEnemy : GroundedEnemyMovement
         base.Awake();
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
-
-        // originalScale = transform.localScale;
-        // transform.localScale = Vector3.zero;
     }
-
-    // void Start()
-    // {
-    //     if (isSpawning) return;
-    //     StartCoroutine(SpawnRoutine());
-    // }
 
     protected override void Update()
     {
@@ -60,26 +43,6 @@ public class ChargingEnemy : GroundedEnemyMovement
         animator.Play("EnemyCharging", 0, 0f);
         StartCoroutine(Dash(dashDirection));
     }
-
-    // IEnumerator SpawnRoutine()
-    // {
-    //     isSpawning = true;
-
-    //     if (spawnParticle != null)
-    //         spawnParticle.Play();
-
-    //     yield return new WaitForSeconds(spawnParticle.main.duration);
-
-    //     // tween scale from 0 → 1
-    //     Tween t = transform.DOScale(originalScale, spawnTime).SetEase(Ease.OutBack);
-
-    //     // wait until tween finishes
-    //     yield return t.WaitForCompletion();
-
-    //     isSpawning = false;
-
-
-    // }
 
     IEnumerator Dash(Vector3 dashDir)
     {

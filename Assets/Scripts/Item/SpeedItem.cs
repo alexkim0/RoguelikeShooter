@@ -3,25 +3,13 @@ using UnityEngine;
 public class SpeedItem : GeneralItem
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public GameObject player;
     public float multiplier;
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-//    public float walkSpeed;
-    // public float maxAirSpeed;
-    // public float downwardSlideSpeed;
-    // public float slideSpeed;
-    // private float moveSpeed;
-    // public float dashSpeed;
     public override void giveItem()
 	{
         
@@ -34,6 +22,7 @@ public class SpeedItem : GeneralItem
         movement.dashSpeed *= multiplier;
         movement.slideSpeed *= multiplier;
         dashing.dashForce *= multiplier;
+        Destroy(gameObject);
         // movement.moveSpeed *= multiplier;
 
 	}

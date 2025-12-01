@@ -9,8 +9,8 @@ public class PlayerArsenalManager : MonoBehaviour
     public Transform playerArsenal;
     public Animator handAnimator;
     public Transform handMesh;
-    private List<GameObject> weapons;
-    private int currentWeaponIndex;
+    public List<GameObject> weapons;
+    public int currentWeaponIndex;
 
 
     [Header("Swap setting")]

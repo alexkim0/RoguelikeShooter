@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MapEnemySpawner : EnemySpawner
+public class MapEnemySpawner : RandomSpawner
 {
     [Header("Spawn Settings")]
     public float spawnTimeInterval = 10f;
@@ -35,8 +35,8 @@ public class MapEnemySpawner : EnemySpawner
         if (currentTime >= nextIncreaseTime)
         {
             nextIncreaseTime += 30f;
-            enemyCount += 1;
-            Debug.Log("Increasing enemy count to: " + enemyCount);
+            spawnCount += 1;
+            Debug.Log("Increasing enemy count to: " + spawnCount);
         }
     }
 }
