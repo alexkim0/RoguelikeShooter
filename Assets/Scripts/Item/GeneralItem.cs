@@ -23,7 +23,7 @@ public class GeneralItem : Interactable
     // float for subtracting from Time.time so the floating process starts at spawnedY
     private float floatStartTime;
 
-    void Awake()
+    protected virtual void Awake()
     {
         interactPrompt = "to get this item";
         player = GameObject.FindGameObjectWithTag("Player");

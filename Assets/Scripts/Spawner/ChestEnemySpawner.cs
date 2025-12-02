@@ -19,7 +19,11 @@ public class ChestEnemySpawner : RandomSpawner
 
     public override void SpawnEnemies()
     {
-        spawnCount = Random.Range(lowBoundEnemyCount, highBoundEnemyCount);
-        base.SpawnEnemies();
+        if (Random.Range(0f, 100f) > 60f)
+        {
+            spawnCount = Random.Range(lowBoundEnemyCount, highBoundEnemyCount);
+            base.SpawnEnemies();   
+        }
+
     }
 }

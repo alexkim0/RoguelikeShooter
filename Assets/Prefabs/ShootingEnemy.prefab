@@ -1072,8 +1072,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c06883e21cd43fe8d1403ae4a45082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  maxHealth: 100
+  maxHealth: 50
   moneyDropped: 5
+  currentHealth: 0
 --- !u!54 &3671562068326673220
 Rigidbody:
   m_ObjectHideFlags: 0

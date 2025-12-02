@@ -8,6 +8,7 @@ public class Dashing : MonoBehaviour
     public Transform playerCam;
     private Rigidbody rb;
     private PlayerMovement playerMovement;
+    public AudioSource dashAudio;
 
     [Header("Dashing")]
     public float dashForce;
@@ -61,6 +62,7 @@ public class Dashing : MonoBehaviour
         playerMovement.maxYSpeed = maxDashYSpeed;
 
         playerCamera.DoFov(dashFov);
+        dashAudio.enabled = true;
 
         Transform forwardTransform;
 
@@ -99,6 +101,8 @@ public class Dashing : MonoBehaviour
         playerMovement.maxYSpeed = 0;
 
         playerCamera.DoFov(90f);
+
+        dashAudio.enabled = false;
 
         if (disableGravity)
             rb.useGravity = true;

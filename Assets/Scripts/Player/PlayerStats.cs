@@ -74,7 +74,7 @@ public class PlayerStats : MonoBehaviour
             }
         }   
 
-        //IsDead();
+        IsDead();
     }
 
     public void RegenerateShield()
@@ -97,7 +97,7 @@ public class PlayerStats : MonoBehaviour
     {
         if (currentHealth == 0)
         {
-            SceneManager.LoadScene("Game Over");
+            GameOverManager.instance.GameOver();
         }
     }
 }

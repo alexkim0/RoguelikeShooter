@@ -18,12 +18,12 @@ public class Rifle : HitscanGunSystem
     protected override void Awake()
     {
         // rifle preset
-        damage = 5;
+        damage = 10;
         timeBetweenShooting = 0.1f;
         spread = 0.01f;
         range = 100;
         reloadTime = 1.5f;  
-        magazineSize = 20;
+        magazineSize = 30;
         bulletsPerTap = 0;
         allowButtonHold = true;
         base.Awake();

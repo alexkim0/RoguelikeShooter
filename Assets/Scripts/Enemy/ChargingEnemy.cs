@@ -8,6 +8,7 @@ public class ChargingEnemy : GroundedEnemyMovement
     [Header("References")]
     public Animator animator;
     public Rigidbody rb;
+    public AudioSource runningAudio;
     
     [Header("DashSetting")]
     public float dashSpeed = 30f;
@@ -24,6 +25,7 @@ public class ChargingEnemy : GroundedEnemyMovement
         base.Awake();
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
+        runningAudio = GetComponent<AudioSource>();
     }
 
     protected override void Update()
@@ -35,6 +37,8 @@ public class ChargingEnemy : GroundedEnemyMovement
         // Convert current movement speed to a usable multiplier
         float multiplier = Mathf.Clamp(currentSpeed / agent.speed, 0.5f, 2f);
         animator.SetFloat("RunningMultiplier", multiplier);
+
+        runningAudio.pitch = multiplier * 1.3f;
     }
 
     protected override void AttackPlayer()

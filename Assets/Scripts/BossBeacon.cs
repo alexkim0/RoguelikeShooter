@@ -7,6 +7,7 @@ public class BossBeacon : Interactable
 {
     public GameObject bossPrefab;
     public BossUI bossUI;
+    public AudioSource crackingAudio;
 
     [Header("Camera Shake Settings")]
     public float duration;
@@ -45,6 +46,7 @@ public class BossBeacon : Interactable
 
     IEnumerator BossSpawnRoutine()
     {
+        crackingAudio.enabled = true;
         Tween t = Camera.main.transform.DOShakePosition(duration, strength, 20, 90, false, true);
 
         yield return t.WaitForCompletion();
